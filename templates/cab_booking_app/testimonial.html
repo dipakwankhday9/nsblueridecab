@@ -1,0 +1,45 @@
+{% extends 'base\base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- section begin -->
+<section id="subheader" class="jarallax text-light">
+    <img src="{% static 'images/background/subheader.jpg' %}" class="jarallax-img" alt="">
+        <div class="center-y relative text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1>Testimonial</h1>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+</section>
+<!-- section close -->
+<br>
+<br>
+<section id="section-testimonials" class="no-top no-bottom">
+   <div class="container-fluid">
+      <div class="row g-0 align-items-center">
+        {% for t in testimonial %}
+        <div class="col-md-4">
+            <div class="de-image-text">
+               <div class="d-text">
+                  <div class="d-quote id-color"><i class="fa fa-quote-right"></i></div>
+                  <h4>{{t.title}}!</h4>
+                  <blockquote>
+                    {{t.description|safe}}
+                     <span class="by">{{t.username}}</span>
+                  </blockquote>
+               </div>
+               <img src="{{t.image.url}}" class="img-fluid" alt="" style="max-height: 40rem; max-width: 60rem;">
+            </div>
+         </div>
+        {% endfor %}
+         
+        
+      </div>
+   </div>
+</section>
+{% endblock content %}

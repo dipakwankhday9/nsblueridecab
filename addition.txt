@@ -1,0 +1,18 @@
+Journey Type
+Oneway Trip
+Round Trip
+Local Rental
+Airport Transfer
+Outstation
+
+add ckeditor
+
+vehical type
+name:
+rate
+
+quatation
+gallery
+testimonial
+
+whatsapp add

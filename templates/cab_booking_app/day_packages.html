@@ -1,0 +1,32 @@
+{% extends 'base/base.html' %}
+
+{% load static  %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1>Day Packages</h1>
+<br>
+<br>
+
+{{package_day}}
+
+{% for p in package_day %}
+    <h4>{{p.package_name}}</h4>
+{% endfor %}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

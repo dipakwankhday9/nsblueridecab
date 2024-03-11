@@ -1,0 +1,409 @@
+{% extends 'base/base.html' %}
+{% block title %}NS Blue Ride Cab - Home{% endblock %}
+{% load static %}
+{% block content %}
+{% include 'base/slider.html' %}
+
+
+
+<!-- latest package -->
+<section id="section-news">
+   <div class="container">
+      <div class="row align-items-center">
+         <div class="col-lg-6 offset-lg-3 text-center">
+              <a href="{% url 'packages' %}"><h2>Our Popular Package</h2></a>
+               <p>Breaking news, fresh perspectives, and in-depth coverage - stay ahead with our latest news, insights, and analysis.</p>
+               <div class="spacer-20"></div>
+         </div>
+         {% for p in package %}
+         <div class="col-lg-4 mb10">
+            <div class="bloglist s2 item">
+                     <div class="post-content">
+                        <div class="post-image">
+                              <div class="date-box">
+                                 <div class="m">{{p.package_day}}</div>
+                                 <div class="d"> Day</div>
+                              </div>
+                              <img alt="" src="{{p.package_img.url}}" class="lazy" style="height: 15rem;">
+                        </div>
+                        <div class="post-text">                                                    
+                              <h4><a href="/package_detail/{{p.id}}/">{{p.package_name}}<span></span></a></h4>
+                              <p>{{p.description|truncatechars:50|safe}}</p>
+                              <a class="btn-main" href="/package_detail/{{p.id}}/">Read More</a>
+                        </div>
+                     </div>
+            </div>
+         </div>
+         {% endfor %}
+                  
+                 
+      </div>
+   </div>
+</section>
+
+<!-- End latest package -->
+<!-- Category -->
+<section id="section-cars">
+   <div class="container">
+      <div class="row align-items-center">
+         <div class="col-lg-6 offset-lg-3 text-center">
+            <a href="{% url 'categories' %}"><h2>Our Popular Cab Routes</h2></a>
+            <p>Driving your dreams to reality with an exquisite fleet of versatile vehicles for unforgettable journeys.</p>
+            <div class="spacer-20"></div>
+         </div>
+         <div id="items-carousel" class="owl-carousel wow fadeIn autoplay">
+            {% for cat in category %}
+            <div class="col-lg-12">
+               <div class="de-item mb30">
+                  <div class="d-img">
+                     <img src="{{cat.cat_img.url}}" class="img-fluid" alt="cat img" >
+                  </div>
+                  <div class="d-info">
+                     <div class="d-text">
+                        <h4>{{cat.cat_name}}</h4>
+                        <div class="d-price">
+                           <a class="btn-main" href="/packages/?category={{cat.id}}">View</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            {% endfor %}
+         </div>
+      </div>
+   </div>
+</section>
+<!-- Category end -->
+
+<!-- Banner -->
+ <section class="text-light jarallax ">
+   <img src="{% static 'images/background/2.jpg' %}" class="jarallax-img" alt="">
+   <div class="container">
+      <div class="row g-5">
+         <div class="col-lg-6 wow fadeInRight">
+               <h2>We offer customers a wide range of <span class="id-color">commercial cars</span> and <span class="id-color">luxury cars</span> for any occasion.</h2>
+         </div>
+         <div class="col-lg-6 wow fadeInLeft">
+               At our car rental agency, we believe that everyone deserves to experience the pleasure of driving a reliable and comfortable vehicle, regardless of their budget. We have curated a diverse fleet of well-maintained cars, ranging from sleek sedans to spacious SUVs, all at competitive prices. With our streamlined rental process, you can quickly and conveniently reserve your desired vehicle. Whether you need transportation for a business trip, family vacation, or simply want to enjoy a weekend getaway, we have flexible rental options to accommodate your schedule.
+         </div>
+      </div>
+      <div class="spacer-double"></div>
+      <div class="row text-center">
+         <div class="col-md-3 col-sm-6 mb-sm-30">
+               <div class="de_count transparent text-light wow fadeInUp">
+                  <h3 class="timer" data-to="7280" data-speed="3000">0</h3>
+                  Completed Orders
+               </div>
+         </div>
+         <div class="col-md-3 col-sm-6 mb-sm-30">
+               <div class="de_count transparent text-light wow fadeInUp">
+                  <h3 class="timer" data-to="4875" data-speed="3000">0</h3>
+                  Happy Customers
+               </div>
+         </div>
+         <div class="col-md-3 col-sm-6 mb-sm-30">
+               <div class="de_count transparent text-light wow fadeInUp">
+                  <h3 class="timer" data-to="235" data-speed="3000">0</h3>
+                  Vehicles Fleet
+               </div>
+         </div>
+         <div class="col-md-3 col-sm-6 mb-sm-30">
+               <div class="de_count transparent text-light wow fadeInUp">
+                  <h3 class="timer" data-to="5" data-speed="3000">0</h3>
+                  Years Experience
+               </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- End Banner -->
+<!-- 1 Day Packages -->
+
+<section id="section-news">
+   <div class="container">
+      <div class="row align-items-center">
+         <div class="col-lg-6 offset-lg-3 text-center">
+              <a href="{% url 'day_package1' %}"><h2>Our 1 Day Popular Package</h2></a> 
+               <p>Breaking news, fresh perspectives, and in-depth coverage - stay ahead with our latest news, insights, and analysis.</p>
+               <div class="spacer-20"></div>
+         </div>
+         {% for p in package_day1 %}
+         <div class="col-lg-4 mb10">
+            <div class="bloglist s2 item">
+                     <div class="post-content">
+                        <div class="post-image">
+                              <div class="date-box">
+                                 <div class="m">{{p.package_day}}</div>
+                                 <div class="d"> Day</div>
+                              </div>
+                              <img alt="" src="{{p.package_img.url}}" class="lazy" style="height: 15rem;">
+                        </div>
+                        <div class="post-text">                                                    
+                              <h4><a href="/package_detail/{{p.id}}/">{{p.package_name}}<span></span></a></h4>
+                              <p>{{p.description|truncatechars:50|safe}}</p>
+                              <a class="btn-main" href="/package_detail/{{p.id}}/">Read More</a>
+                        </div>
+                     </div>
+            </div>
+         </div>
+         {% endfor %}
+                  
+                 
+      </div>
+   </div>
+</section>
+
+
+<!-- end day wise packages -->
+
+<!--2 Day Packages  -->
+<section id="section-news">
+   <div class="container">
+      <div class="row align-items-center">
+         <div class="col-lg-6 offset-lg-3 text-center">
+              <a href="{% url 'day_package2' %}"><h2>Our 2 Day Packages</h2></a>
+               <p>Breaking news, fresh perspectives, and in-depth coverage - stay ahead with our latest news, insights, and analysis.</p>
+               <div class="spacer-20"></div>
+         </div>
+         {% for p in package_day2 %}
+         <div class="col-lg-4 mb10">
+            <div class="bloglist s2 item">
+                     <div class="post-content">
+                        <div class="post-image">
+                              <div class="date-box">
+                                 <div class="m">{{p.package_day}}</div>
+                                 <div class="d"> Day</div>
+                              </div>
+                              <img alt="" src="{{p.package_img.url}}" class="lazy" style="height: 15rem;">
+                        </div>
+                        <div class="post-text">                                                    
+                              <h4><a href="">{{p.package_name}}<span></span></a></h4>
+                              <p>{{p.description|truncatechars:50|safe}}</p>
+                              <a class="btn-main" href="/package_detail/{{p.id}}/">Read More</a>
+                        </div>
+                     </div>
+            </div>
+         </div>
+         {% endfor %}
+                  
+                 
+      </div>
+   </div>
+</section>
+<!-- 2 day package end -->
+<!-- New service -->
+ <section class="text-light jarallax" aria-label="section">
+                <img src="{% static 'images/background/3.jpg' %}" alt="" class="jarallax-img">
+                <h2 class="text-center">Our Services</h2>
+                <div class="container mt-5">
+                   
+                    <div class="row">
+                         <div class="col-md-3">
+            <i class="fa fa-plane de-icon mb20"></i>
+            <h4>Airport Transfer</h4>
+            <p><strong>Hire car in Pune for all Airport pickup/drop ..</strong></p>
+         </div>
+         <div class="col-md-3">
+            <i class="fa fa-taxi de-icon mb20"></i>
+            <h4>Outstation Cab</h4>
+            <p><strong>Book cab from Pune to Outstation for multiple days .</strong></p>
+         </div>
+         <div class="col-md-3">
+            <i class="fa fa-map-pin de-icon mb20"></i>
+            <h4>Local Transfer</h4>
+            <p><strong>Book cab in Pune for local use, package starting from 8 Hrs/80 kms</strong> </p>
+         </div>
+         <div class="col-md-3">
+            <i class="fa fa-road de-icon mb20"></i>
+            <h4>Oneway Cab</h4>
+            <p><strong>One way cab from Pune to Mumbai/Shirdi/Aurangabaad/Kolhapur etc..@ Oneway fare</strong> </p>
+         </div>
+                    
+                </div>
+                </div>
+            </section>  
+<!-- end new services -->
+<br>
+<br>
+<!-- Banner 2 -->
+<section id="section-img-with-tab" class="bg-dark text-light">
+   <div class="container">
+      <div class="row align-items-center">
+         <div class="col-lg-7 offset-lg-6">
+               
+              <h2>Hassle free and comfortable travel each and every time with us </h2>
+               <div class="spacer-10"></div>
+               
+               
+               
+               
+         </div>
+      </div>
+   </div>
+
+   <div class="image-container col-md-6 pull-right" data-bgimage="url({% static 'images/misc/e2.jpg' %}) center"></div>
+
+<!-- Marquee -->
+ <div class="position-absolute d-flex bottom-20">
+   <div class="de-marquee-list d-marquee-small">
+      <div class="d-item">
+      <span class="d-item-txt">Expert Drivers</span>
+      <span class="d-item-display">
+         <i class="d-item-dot"></i>
+      </span>
+      <span class="d-item-txt">On Time Pickup</span>
+      <span class="d-item-display">
+         <i class="d-item-dot"></i>
+      </span>
+      <span class="d-item-txt">Door Step Pickup/Drop</span>
+      <span class="d-item-display">
+         <i class="d-item-dot"></i>
+      </span>
+      <span class="d-item-txt">Transparent Billing</span>
+      <span class="d-item-display">
+         <i class="d-item-dot"></i>
+      </span>
+      <span class="d-item-txt">Providing Clean And Maintain Cabs</span>
+      <span class="d-item-display">
+         <i class="d-item-dot"></i>
+      </span>
+      <!-- <span class="d-item-txt">Sports Car</span>
+      <span class="d-item-display">
+         <i class="d-item-dot"></i>
+      </span>
+      <span class="d-item-txt">Coupe</span>
+      <span class="d-item-display">
+         <i class="d-item-dot"></i>
+      </span>
+      <span class="d-item-txt">Minivan</span>
+      <span class="d-item-display">
+         <i class="d-item-dot"></i>
+      </span>
+      <span class="d-item-txt">Station Wagon</span>
+      <span class="d-item-display">
+         <i class="d-item-dot"></i>
+      </span>
+      <span class="d-item-txt">Pickup Truck</span>
+      <span class="d-item-display">
+         <i class="d-item-dot"></i>
+      </span>
+      <span class="d-item-txt">Minivans</span>
+      <span class="d-item-display">
+         <i class="d-item-dot"></i>
+      </span>
+      <span class="d-item-txt">Exotic Cars</span>
+      <span class="d-item-display">
+         <i class="d-item-dot"></i>
+      </span> -->
+      </div>
+   </div>
+
+    <div class="de-marquee-list d-marquee-small">
+       <div class="d-item">
+      <span class="d-item-txt">Expert Drivers</span>
+      <span class="d-item-display">
+         <i class="d-item-dot"></i>
+      </span>
+      <span class="d-item-txt">On Time Pickup</span>
+      <span class="d-item-display">
+         <i class="d-item-dot"></i>
+      </span>
+      <span class="d-item-txt">Door Step Pickup/Drop</span>
+      <span class="d-item-display">
+         <i class="d-item-dot"></i>
+      </span>
+      <span class="d-item-txt">Transparent Billing</span>
+      <span class="d-item-display">
+         <i class="d-item-dot"></i>
+      </span>
+      <span class="d-item-txt">Providing Clean And Maintain Cabs</span>
+      <span class="d-item-display">
+         <i class="d-item-dot"></i>
+      </span>
+      </div>
+   </div> 
+</div>
+<!-- end marquee -->
+</section>
+<!-- banner 2 end -->
+
+<!-- Vehicle fleet -->
+<section id="section-cars">
+   <div class="container">
+      <div class="row align-items-center">
+         <div class="col-lg-6 offset-lg-3 text-center">
+               <h2>Our Vehicle Fleet</h2>
+               <p>Driving your dreams to reality with an exquisite fleet of versatile vehicles for unforgettable journeys.</p>
+               <div class="spacer-20"></div>
+         </div>
+
+         <div class="clearfix"></div>
+         {% for c in car %}
+         <div class="col-lg-3">
+               <div class="de-item mb30">
+                  <div class="d-img">
+                     <img src="{{c.car_img.url}}" class="img-fluid" alt="">
+                  </div>
+                  <!-- <div class="d-info">
+                     <div class="d-text">
+                           <h4>Jeep Renegade</h4>
+                           <div class="d-item_like">
+                              <i class="fa fa-heart"></i><span>21</span>
+                           </div>
+                           <div class="d-atr-group">
+                              <span class="d-atr"><img src="images/icons/1.svg" alt="">5</span>
+                              <span class="d-atr"><img src="images/icons/2.svg" alt="">2</span>
+                              <span class="d-atr"><img src="images/icons/3.svg" alt="">4</span>
+                              <span class="d-atr"><img src="images/icons/4.svg" alt="">SUV</span>
+                           </div>
+                           <div class="d-price">
+                              Daily rate from <span>$152</span>
+                              <a class="btn-main" href="car-single.html">Rent Now</a>
+                           </div>
+                     </div>
+                  </div> -->
+               </div>
+         </div>
+         {% endfor %}
+      
+
+      </div>
+   </div>
+</section>
+
+<!-- End fleet -->
+
+<!-- Testinominal -->
+
+<section id="section-testimonials" class="no-top no-bottom">
+   <div class="container-fluid">
+      <a href="{% url 'testimonial' %}"> <h2 class="text-center">More testimonial</h2></a>
+      <div class="row g-0 align-items-center">
+        {% for t in testimonial %}
+        <div class="col-md-4">
+            <div class="de-image-text">
+               <div class="d-text">
+                  <div class="d-quote id-color"><i class="fa fa-quote-right"></i></div>
+                  <h4><strong>{{t.title}}!</strong></h4>
+                  <blockquote>
+                    <strong>{{t.description|safe}}</strong>
+                     <span class="by"><strong>{{t.username}}</strong></span>
+                  </blockquote>
+               </div>
+               <img src="{{t.image.url}}" class="img-fluid" alt="" style="max-height: 40rem; max-width: 60rem;">
+            </div>
+         </div>
+        {% endfor %}
+         
+        
+      </div>
+   </div>
+</section>
+<!-- end -->
+
+
+
+  
+
+
+{% endblock %}

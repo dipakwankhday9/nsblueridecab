@@ -1,0 +1,115 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+ <!-- section begin -->
+<section id="subheader" class="jarallax text-light">
+    <img src="{% static 'images/background/subheader.jpg' %}" class="jarallax-img" alt="">
+        <div class="center-y relative text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1>{{pack_detail.package_name}}</h1>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+</section>
+<!-- section close -->
+
+<!-- section begin -->
+<section aria-label="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="blog-read">
+                    
+                    <img alt="" src="{{pack_detail.package_img.url}}" class="img-fullwidth mb30" style="height: 30rem;">
+                    
+                    <h2>{{pack_detail.package_name}}</h2>
+                    <div class="post-text">
+                        <p>{{pack_detail.description|safe}}</p>
+
+                    </div>
+
+                </div>
+
+                <div class="spacer-single"></div>
+
+            </div>
+        
+        </div>
+
+    </div>
+
+</section>
+
+{% comment %} Car Booking {% endcomment %}
+<section id="section-cars">
+   <div class="container">
+      <div class="row">
+         
+         <div class="col-lg-12">
+            {% for c in pack_detail.car_set.all %}
+            <div class="row">
+               <div class="col-lg-12">
+                  <div class="de-item-list mb30">
+                     <div class="d-img">
+                        <img src="{{c.car_img.url}}" class="img-fluid" alt="" style="height: 12rem;">
+                     </div>
+                     
+                     <div class="d-info">
+                        
+                        <div class="d-text">
+                           <h4>{{c.car_name}}</h4>
+                           <div class="d-atr-group">
+                              <ul class="d-atr">
+                                 <li><span><strong>Seats:</strong></span>{{c.seat_capacity}}</li>
+                                 <li><span><strong>Car Type:</strong></span>{{c.car_facility}}</li>
+                                 <li><span><strong>Luggage:</strong></span>{{c.bag}} bags</li>
+                                 <li>Day Package:&nbsp;&nbsp;{{c.car_type.day_package}}</li>
+                                 <li><span><strong>Extra per km:</strong></span>{{c.car_type.extra_per_km}}</li>
+                                 {% comment %} <li><span>Doors:</span>4</li> {% endcomment %}
+
+                                 {% comment %} <li><span>Fuel:</span>Petrol</li> {% endcomment %}
+                                 <li><span><strong>Package Km:</strong></span>{{pack_detail.package_km}}</li>
+                                  {% comment %} <li><span>Engine:</span>3000</li>
+                                 <li><span>Drive:</span>4x4</li>
+                                 <li><span>Type:</span>Hatchback</li>   {% endcomment %}
+                                
+                              </ul>
+                              <p><span><strong>Includes:</strong></span>&nbsp; Fuel Charges,&nbsp;  &nbsp;&nbsp;Night allowance</p>
+                               <p><span><strong>Exclude:</strong></span>&nbsp;Toll/State Tax,&nbsp; &nbsp;&nbsp; Car Parking, &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br> *If extra km or hours will pay extra charges &nbsp;Driver allowance &nbsp;Night allowance,</p>
+                           </div>
+                        </div>
+                         <div class="spacer-single">
+                            
+                         </div>
+                    
+                     </div>
+                                         
+                   
+                   
+                     <div class="d-price">
+                        Package Rate <span> &#2352; {{c.car_type.rate}} /-</span>
+                        <a class="btn-main" href="{% url 'booking' %}">Book Now</a>
+                     </div>
+                      
+                     <div class="clearfix"></div>
+                    
+                  </div>
+                  
+               </div>
+            </div>
+            
+            {% endfor %}
+         </div>
+      </div>
+   </div>
+</section>
+{% comment %} Car booking end {% endcomment %}
+
+  
+
+{% endblock %}

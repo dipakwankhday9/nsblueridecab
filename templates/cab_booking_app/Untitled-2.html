@@ -1,0 +1,51 @@
+
+ <div class="col-lg-12">
+            <div class="row">
+                {% for c in pack_detail.car_set.all %}
+               <div class="col-lg-12">
+                  <div class="de-item-list mb30">
+                     <div class="d-img">
+                        <img src="/{{c.car_img}}" class="img-fluid" alt="">
+                     </div>
+                     <div class="d-info">
+                        <div class="d-text demo-icon-wrap">
+                            
+                             <i class="fa fa-fw" aria-hidden="true" title="Copy to use car"> </i>
+                             <h4>{{c.car_name}}</h4>
+                             
+                             <span class="text-grey">[&amp;#xf1b9;]</span>       
+                           
+                           
+                           <div class="d-atr-group">
+                              <ul class="d-atr">
+                                
+                                 <li><span>Seats:</span>{{c.seat_capacity}}</li>
+                                 <li><span>Bag:</span>{{c.bag}}</li>
+                                 <li><span>Facility:</span>{{c.car_facility}}</li>
+                                 <li><span>Day Package:</span>{{c.car_type.day_package}} Day</li>
+                                 <li><span>Extra per hour:</span>{{c.car_type.extra_per_hour}} Day</li>
+                                 
+                              </ul>
+                              {% comment %}  {% endcomment %}
+                            
+							
+                        </div>
+                              {% comment %}  {% endcomment %}
+                             
+                             
+                           </div>
+
+                        </div>
+                     </div>
+                     <div class="d-price">
+                        Daily rate from <span>{{c.car_type.rate}}/Km</span>
+                        <a class="btn-main" href="car-single.html">Rent Now</a>
+                     </div>
+                     <div class="clearfix"></div>
+                  </div>
+               </div>
+                {% endfor %} 
+                                     
+            </div>
+            
+         </div>

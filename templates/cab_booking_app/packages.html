@@ -1,0 +1,120 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .all:hover{
+        background-color: lightgreen;
+        transition: background-color 0.3s ease-in-out;
+    }
+    .day1:hover{
+        background-color: lightyellow;
+        transition: background-color 0.3s ease-in-out; 
+    }
+     .day2:hover{
+        background-color: lightgrey;
+        transition: background-color 0.3s ease-in-out; 
+    }
+</style>
+ <!-- section begin -->
+<section id="subheader" class="jarallax text-light">
+    <img src="{% static 'images/background/subheader.jpg' %}" class="jarallax-img" alt="">
+        <div class="center-y relative text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1>Packages</h1>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+</section>
+<!-- section close -->
+
+<!-- Day package -->
+<section id="section-cars" class="bg-gray-100">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-4 col-6 mb25 order-sm-1 " >
+                        <div class="card p-4 rounded-5 all">
+                            <div class="symbol mb40">
+                               <a href="{% url 'packages' %}"> <i class="fa id-color fa-2x fa-cab"></i></a>
+                            </div>
+                            <span class="h2 mb0 text-center"><a href="{% url 'packages' %}">All Package</a></span>
+                            <span class="text-gray"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-6 mb25 order-sm-1">
+                        <div class="card p-4 rounded-5 day1">
+                            <div class="symbol mb40">
+                                <a href="{% url 'day_package1' %}"><i class="fa id-color fa-2x fa-cab"></i></a>
+                            </div>
+                            <span class="h2 mb0 text-center"><a href="{% url 'day_package1' %}">1 Day Package</a></span>
+                            <span class="text-gray"></span>
+                            {% comment %} <span class="text-gray">Coupons</span> {% endcomment %}
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-6 mb25 order-sm-1">
+                        <div class="card p-4 rounded-5 day2">
+                            <div class="symbol mb40">
+                                <a href="{% url 'day_package2' %}"><i class="fa id-color fa-2x fa-cab"></i></a>
+                            </div>
+                            <span class="h2 mb0 text-center"><a href="{% url 'day_package2' %}">2 Day Package</a></span>
+                            <span class="text-gray"></span>
+                        </div>
+                    </div>
+
+                    {% comment %} <div class="col-lg-3 col-6 mb25 order-sm-1">
+                        <div class="card p-4 rounded-5">
+                            <div class="symbol mb40">
+                                <i class="fa id-color fa-2x fa-calendar-times-o"></i>
+                            </div>
+                            <span class="h1 mb0">24</span>
+                            <span class="text-gray">Cancel Orders</span>
+                        </div>
+                    </div> {% endcomment %}
+                    
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end day packages -->
+
+<section aria-label="section">
+    <div class="container">
+       
+        <div id="gallery" class="row">
+             {% for p in package %}
+            <div class="col-md-4 mb30 item">
+                <div class="de-image-hover rounded">
+                    <a href="/package_detail/{{p.id}}/" >								
+                        <span class="dih-title-wrap">
+                            <span class="dih-title">{{p.package_name}}</span>
+                            <span class="dih-title">{{p.package_km}}</span>
+                        </span>
+                        <span class="dih-overlay"></span>
+                        <img src="{{p.package_img.url}}" class="lazy img-fluid" alt="" style="height: 10rem; width: 100%; ">
+                    </a>
+                </div>
+            </div>
+             {% endfor %}
+            
+            
+        </div>
+       
+        
+    </div>
+        
+</section>
+{% endblock %}

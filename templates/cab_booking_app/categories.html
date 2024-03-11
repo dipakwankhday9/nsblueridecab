@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+ <!-- section begin -->
+<section id="subheader" class="jarallax text-light">
+    <img src="{% static 'images/background/subheader.jpg' %}" class="jarallax-img" alt="">
+        <div class="center-y relative text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1>Our Destinations</h1>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+</section>
+ <!-- section close -->
+            
+
+<section aria-label="section">
+    <div class="container">
+        <div id="gallery" class="row">
+                {% for cat in category %}
+                <div class="col-md-4 mb30 item">
+                    <div class="de-image-hover rounded">
+                        <a href="/packages/?category={{cat.id}}" >								
+                            <span class="dih-title-wrap">
+                                <span class="dih-title">{{cat.cat_name}}</span>
+                                {% comment %} <span class="dih-title">{{p.package_km}}</span> {% endcomment %}
+                            </span>
+                            <span class="dih-overlay"></span>
+                            <img src="{{cat.cat_img.url}}" class="lazy img-fluid" alt="">
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            
+            
+        </div>
+    </div>
+        
+</section>
+{% endblock %}

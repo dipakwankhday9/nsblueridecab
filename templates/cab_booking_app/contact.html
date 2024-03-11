@@ -1,0 +1,109 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+ 
+<!-- section begin -->
+<section id="subheader" class="jarallax text-light">
+   <img src="{% static 'images/background/subheader.jpg' %}" class="jarallax-img" alt="">
+   <div class="center-y relative text-center">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12 text-center">
+               <h1>Contact Us</h1>
+            </div>
+            <div class="clearfix"></div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- section close -->
+<section aria-label="section">
+   {% comment %} message {% endcomment %}
+    {% include 'base/messages.html' %}
+    
+   {% comment %} end message {% endcomment %}
+   <div class="container">
+      <div class="row g-custom-x">
+         <div class="col-lg-8 mb-sm-30">
+            <h3>Connect with us !</h3>
+            <form name="contactForm" id="contact_form" class="form-border" method="post" action="#">
+               {% csrf_token %}
+               <div class="row">
+                  <div class="col-md-4 mb10">
+                     <div class="field-set">
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required>
+                     </div>
+                  </div>
+                  <div class="col-md-4 mb10">
+                     <div class="field-set">
+                        <input type="text" name="email" id="email" class="form-control" placeholder="Your Email" required>
+                     </div>
+                  </div>
+                  <div class="col-md-4 mb10">
+                     <div class="field-set">
+                        <input type="text" name="contact" id="phone" class="form-control" placeholder="Your Phone" required>
+                     </div>
+                  </div>
+               </div>
+               <div class="field-set mb20">
+                  <textarea name="message" id="message" class="form-control" placeholder="Your Message" required></textarea>
+               </div>
+               <div class="g-recaptcha" data-sitekey="copy-your-site-key-here"></div>
+               <div id='submit' class="mt20">
+                  <input type='submit' id='send_message' value='Send Message' class="btn-main">
+               </div>
+               <div id="success_message" class='success'>
+                  Your message has been sent successfully. Refresh this page if you want to send more messages.
+               </div>
+               <div id="error_message" class='error'>
+                  Sorry there was an error sending your form.
+               </div>
+            </form>
+         </div>
+         <div class="col-lg-4 mt-5">
+            <div class="de-box mb30">
+               <h4>NS Blue Ride Cab</h4>
+               <address class="s1">
+                  <span><i class="id-color fa fa-map-marker fa-lg"></i>Dreams Rashak  Building Pune 412207</span>
+                  <span><i class="id-color fa fa-phone fa-lg"></i>+91 9370702118</span>
+                  <span><i class="id-color fa fa-envelope-o fa-lg"></i><a href="mailto:contact@example.com">nsblueridecab@gmail.com</a></span>
+                  {% comment %} <span><i class="id-color fa fa-file-pdf-o fa-lg"></i><a href="#">Download Brochure</a></span> {% endcomment %}
+               </address>
+            </div>
+            {% comment %} <div class="de-box mb30">
+               <h4>AU Office</h4>
+               <address class="s1">
+                  <span><i class="fa fa-map-marker fa-lg"></i>100 Mainstreet Center, Sydney</span>
+                  <span><i class="fa fa-phone fa-lg"></i>+61 333 9296</span>
+                  <span><i class="fa fa-envelope-o fa-lg"></i><a href="mailto:contact@example.com">contact@example.com</a></span>
+                  <span><i class="fa fa-file-pdf-o fa-lg"></i><a href="#">Download Brochure</a></span>
+               </address>
+            </div> {% endcomment %}
+         </div>
+      </div>
+   </div>
+</section>
+
+<section id="section-call-to-action" class="bg-color-2 pt60 pb60 text-light">
+    <div class="container ">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="s2">Call us for further information. Rentaly customer care is here to help you anytime.</h2>
+            </div>
+
+            <div class="col-lg-4 text-lg-center text-sm-center">
+                <div class="phone-num-big">
+                    <i class="fa fa-phone"></i>
+                    <span class="pnb-text">
+                        Call Us Now
+                    </span>
+                    <span class="pnb-num">
+                        +91 9370702118
+                    </span>
+                </div>
+                <a href="#" class="btn-main">Contact Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

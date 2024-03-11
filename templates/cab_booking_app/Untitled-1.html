@@ -1,0 +1,19 @@
+
+
+{% for i in pack_detail.package_include_set.all  %}
+    <ul class="d-atr-group">
+        
+    <li><span></span>{{i.include_items }}</li>
+    </ul>
+{% endfor %}
+
+
+
+<p>Exclude</p>  
+                                        {% for i in pack_detail.package_exclude_set.all  %}
+                                        <ul class="d-atr-group">
+                                            <li><span></span>{{i.exclude_items }}</li>
+                                        </ul>
+                                        {% endfor %}
+
+                                  </p>

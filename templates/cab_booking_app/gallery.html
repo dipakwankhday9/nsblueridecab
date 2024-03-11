@@ -1,0 +1,49 @@
+{% extends 'base\base.html' %}
+{% load static %}
+
+
+{% block content %}
+ <!-- section begin -->
+<section id="subheader" class="jarallax text-light">
+    <img src="{% static 'images/background/subheader.jpg' %}" class="jarallax-img" alt="">
+        <div class="center-y relative text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1>Gallery</h1>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+</section>
+<!-- section close -->
+
+
+<section aria-label="section">
+    <div class="container">
+        <div id="gallery" class="row">
+            {% for i in image %}
+            <div class="col-md-4 mb30 item">
+                <div class="de-image-hover rounded">
+                    <a href="{{i.image.url}}" class="image-popup">								
+                        <span class="dih-title-wrap">
+                            <span class="dih-title">Gallery Title</span>
+                        </span>
+                        <span class="dih-overlay"></span>
+                        <img src="{{i.image.url}}" class="lazy img-fluid" alt="" width="600px" style="max-height: 400px;">
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+            
+           
+            
+        </div>
+        
+    </div>
+        
+</section>
+    
+{% endblock %}
+    
